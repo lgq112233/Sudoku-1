@@ -1,46 +1,46 @@
 #include "shudu.h"
 
-bool RowCheck(int answer[9][9],int row, int shift)
+bool RowCheck(int answer[9][9],int row, int SubNum)
 {
-	bool success = false;
+	bool same = false;
 	for (int i = 0; i < 9; i++)
 	{
-		if (answer[row][i] == shift) 
+		if (answer[row][i] == SubNum) 
 		{
-			success = true;
+			same = true;
 			break;
 		}
 	}
-	return success;
+	return same;
 }
-bool ColCheck(int answer[9][9],int col, int shift)
+bool ColCheck(int answer[9][9],int col, int SubNum)
 {
-	bool success = false;
+	bool same = false;
 	for (int i = 0; i < 9; i++)
 	{
-		if (answer[i][col] == shift)
+		if (answer[i][col] == SubNum)
 		{
-			success = true;
+			same = true;
 			break;
 		}
 	}
-	return success;
+	return same;
 }
-bool SubCheck(int answer[9][9],int row, int col, int shift)
+bool SubCheck(int answer[9][9],int row, int col, int SubNum)
 {
-	bool success = false;
+	bool same = false;
 	int SubRow = (row / 3) * 3;
 	int SubCol = (col / 3) * 3;
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			if (answer[SubRow + i][SubCol + j] == shift)
+			if (answer[SubRow + i][SubCol + j] == SubNum)
 			{
-				success = true;
+				same = true;
 				break;
 			}
 		}
 	}
-	return success;
+	return same;
 }

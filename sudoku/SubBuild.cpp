@@ -6,14 +6,14 @@
 using namespace std;
 bool success = false;
 int RanCreater(int size);
-bool SubBuild(int answer[9][9],int shift)
+bool SubBuild(int answer[9][9],int SubNum)
 {
 	int x, y;
-	int subrow = (shift / 3) * 3;
-	int subcol = (shift % 3) * 3;
+	int subrow = (SubNum / 3) * 3;
+	int subcol = (SubNum % 3) * 3;
 	int tmp;
 	
-	if (shift == 0)
+	if (SubNum == 0)
 	{
 		for (int i = 1; i < 9; i++)
 		{
@@ -27,15 +27,16 @@ bool SubBuild(int answer[9][9],int shift)
 			else i--;
 		}
 	}
-	else if(shift>0)
+	else if(SubNum>0)
 	{
 		int Count = 0;
 		tmp = rand()%9+1;
 		for (int i = 0; i < 9; i++)
 		{
+			tmp++;
 			x = subrow + i / 3;
 			y = subcol + i % 3;
-			tmp++;
+			
 			tmp = tmp % 10;
 			if (!SubCheck(answer, x, y, tmp) &&  !RowCheck(answer, x, tmp)&& !ColCheck(answer, y, tmp)&&tmp!=0)
 			{

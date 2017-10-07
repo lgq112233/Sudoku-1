@@ -9,13 +9,11 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-	//int C = atoi(argv[argc - 1]);
-
-	int C;
-	cin >> C;
+	//int C;
+	//cin >> C;
 
 	int answer[9][9];
-
+	int C = atoi(argv[argc - 1]);
 	ofstream answerout;
 	answerout.open("sudoku.txt");
 	if (C >0)
@@ -27,11 +25,16 @@ int main(int argc,char *argv[])
 		while(i < C)
 		{
 			back = false;
-			if (TryTimes > 0)
+			if (TryTimes > 0&&TryTimes<1000)
 			{
 				InitRest(answer);
 			}
 			else if (TryTimes==0)
+			{
+				InitAll(answer);
+				SubBuild(answer, 0);
+			}
+			else if(TryTimes>=100)
 			{
 				InitAll(answer);
 				SubBuild(answer, 0);
@@ -45,7 +48,11 @@ int main(int argc,char *argv[])
 					break;
 				}
 			}
-			if (!back)
+			if (back)
+			{
+				TryTimes++;
+			}
+			else
 			{
 				for (int x = 0; x < 9; x++)
 				{
@@ -60,10 +67,6 @@ int main(int argc,char *argv[])
 				
 				TryTimes = 0; 
 				i++;
-			}
-			else
-			{
-				TryTimes++;
 			}
 		}
 		answerout.close();
