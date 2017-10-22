@@ -19,7 +19,7 @@ bool SubBuild(int answer[9][9],int SubNum)
 		{
 			x = subrow + i / 3;
 			y = subcol + i % 3;
-			tmp = RanCreater(8) + 2;
+			tmp = RanCreater(9) + 1;
 			if (!RowCheck(answer, x, tmp)&&!SubCheck(answer, x, y, tmp) && !ColCheck(answer, y, tmp)  )
 			{
 				answer[x][y] = tmp;

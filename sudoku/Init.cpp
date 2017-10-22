@@ -6,7 +6,7 @@ void InitAll(int answer[9][9])
 		for (int c = 0; c < 9; c++)
 			answer[r][c] = 0;
 	}
-	answer[0][0] = 1;
+	answer[0][0] = 4;
 
 }
 void InitRest(int answer[9][9])
